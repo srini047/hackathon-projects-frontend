@@ -1,11 +1,17 @@
-import './App.css';
-import Ideas from './pages/Ideas';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Ideas from "./pages/Ideas";
+import Idea from "./pages/Idea";
 
 function App() {
   return (
-    <div className="App">
-      <Ideas />
-    </div>
+    <BrowserRouter>
+        <Routes>
+          {/* <Route path="/" element={<Navigate to="home" />} /> */}
+          <Route path="idea/" element={<Idea />} />
+          <Route path="ideas" element={<Ideas />} />
+        </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './Idea.css';
+import React, { useState } from "react";
+import "./Idea.css";
 
 function SubmitButton({ onSubmit }) {
   return (
@@ -13,15 +13,22 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const [topic, setTopic] = useState(null);
+
+  const handleChange = (event) => {
+    setTopic(event.target.value);
+  };
 
   async function handleSubmit() {
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:3000/projectIdeas');
+      const response = await fetch(
+        `http://localhost:3000/projectIdea?topic=${topic}`
+      );
       const uncleanData = await response.json();
-      const data = uncleanData.description.split('\n').splice(1,);
+      const data = uncleanData.description.split("\n").splice(1);
       setData(data);
     } catch (error) {
       setError(error);
@@ -31,12 +38,20 @@ function App() {
   }
 
   return (
-    <div className='App'>
-      <form onSubmit={(event) => {
-        event.preventDefault();
-        handleSubmit();
-      }}>
-        {/* Form elements go here */}
+    <div className="App">
+      <input
+        type="text"
+        id="topic"
+        name="message"
+        onChange={handleChange}
+        placeholder="fashion, technology, saas..."
+      />
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleSubmit();
+        }}
+      >
         <SubmitButton onSubmit={handleSubmit} />
       </form>
       {isLoading && <p>Loading...</p>}
