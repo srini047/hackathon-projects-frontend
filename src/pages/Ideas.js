@@ -50,7 +50,8 @@ function App() {
         {/* Form elements go here */}
         <SubmitButton onSubmit={handleSubmit} />
       </form>
-
+      <br />
+      <br />
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
 

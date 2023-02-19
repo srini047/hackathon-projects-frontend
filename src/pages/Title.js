@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { Button, List, Input } from 'antd';
 import "./Idea.css";
 
 function SubmitButton({ onSubmit }) {
   return (
-    <button className="submit-button" onClick={onSubmit}>
+    <Button type="primary" onClick={onSubmit}>
       Submit
-    </button>
+    </Button>
   );
 }
 
@@ -22,10 +23,11 @@ function App() {
   async function handleSubmit() {
     setIsLoading(true);
     setError(null);
-
+    setData(null);
+  
     try {
       const response = await fetch(
-        `http://localhost:3000/projectTitle?desc=${desc}`
+        `http://localhost:4000/projectTitle?desc=${desc}`
       );
       const uncleanData = await response.json();
       const data = uncleanData.description.split("\n").splice(1);
@@ -38,9 +40,19 @@ function App() {
   }
 
   return (
-    <div className="App">
-        <textarea id="desc" name="desc" rows="4" cols="50" onChange={handleChange}>
-        </textarea>
+    <div className="container">
+      <h1>Project title generator</h1>
+      <p>Paste the description of your project and <s><i>our</i></s> Cohere's NLP technology will give you cool project names</p>
+      <br/>
+      <Input.TextArea
+        rows={4}
+        columns={15}
+        type="text"
+        id="desc"
+        name="message"
+        onChange={handleChange}
+        placeholder="Enter the project description..."
+      />
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -52,11 +64,11 @@ function App() {
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
       {data && (
-        <p>
+        <List>
           {data.map((item) => (
-            <li>{item}</li>
+            <List.Item>{item}</List.Item>
           ))}
-        </p>
+        </List>
       )}
     </div>
   );
