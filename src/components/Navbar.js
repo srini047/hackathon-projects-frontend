@@ -7,7 +7,7 @@ function CollapsibleExample() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="http://localhost:8000/">Hackathon Project Initiater</Navbar.Brand>
+        <Navbar.Brand href="http://localhost:8000/">HackProInit</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
