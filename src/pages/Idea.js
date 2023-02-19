@@ -23,6 +23,7 @@ function App() {
   async function handleSubmit() {
     setIsLoading(true);
     setError(null);
+    setData(null);
   
     try {
       const response = await fetch(
@@ -54,7 +55,6 @@ function App() {
         onSubmit={(event) => {
           event.preventDefault();
           handleSubmit();
-          setData(null);
         }}
       >
         <SubmitButton onSubmit={handleSubmit} />
