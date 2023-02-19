@@ -28,7 +28,7 @@ function App() {
         `http://localhost:3000/projectDescription?name=${name}`
       );
       const uncleanData = await response.json();
-      const data = uncleanData.description.split("\n").splice(1);
+      const data = uncleanData.description.split("\n").join('');
       setData(data);
     } catch (error) {
       setError(error);
