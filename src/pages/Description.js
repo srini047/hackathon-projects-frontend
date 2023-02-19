@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { Button, List, Input } from 'antd';
 import "./Idea.css";
 
 function SubmitButton({ onSubmit }) {
   return (
-    <button className="submit-button" onClick={onSubmit}>
+    <Button type="primary" onClick={onSubmit}>
       Submit
-    </button>
+    </Button>
   );
 }
 
@@ -22,13 +23,13 @@ function App() {
   async function handleSubmit() {
     setIsLoading(true);
     setError(null);
-
+  
     try {
       const response = await fetch(
-        `http://localhost:3000/projectDescription?name=${name}`
+        `http://localhost:4000/projectDescription?name=${name}`
       );
       const uncleanData = await response.json();
-      const data = uncleanData.description.split("\n").join('');
+      const data = uncleanData.description.split("\n").splice(1);
       setData(data);
     } catch (error) {
       setError(error);
@@ -38,18 +39,23 @@ function App() {
   }
 
   return (
-    <div className="App">
-        <input
+    <div className="container">
+      <h1>Project description generator</h1>
+      <p>Skip the time of writing description for your project.</p>
+      <h3>Thanks to Cohere!!!</h3>
+      <br/>
+      <Input
         type="text"
         id="name"
-        name="title"
+        name="message"
         onChange={handleChange}
-        placeholder="Provide the project title"
+        placeholder="fashion, technology, saas..."
       />
       <form
         onSubmit={(event) => {
           event.preventDefault();
           handleSubmit();
+          setData(null);
         }}
       >
         <SubmitButton onSubmit={handleSubmit} />
@@ -57,11 +63,11 @@ function App() {
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
       {data && (
-        <p>
+        <List>
           {data.map((item) => (
-            <li>{item}</li>
+            <List.Item>{item}</List.Item>
           ))}
-        </p>
+        </List>
       )}
     </div>
   );

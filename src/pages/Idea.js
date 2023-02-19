@@ -23,7 +23,7 @@ function App() {
   async function handleSubmit() {
     setIsLoading(true);
     setError(null);
-
+  
     try {
       const response = await fetch(
         `http://localhost:4000/projectIdea?topic=${topic}`
@@ -54,6 +54,7 @@ function App() {
         onSubmit={(event) => {
           event.preventDefault();
           handleSubmit();
+          setData(null);
         }}
       >
         <SubmitButton onSubmit={handleSubmit} />
