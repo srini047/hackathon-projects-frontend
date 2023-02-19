@@ -14,7 +14,7 @@ function CollapsibleExample() {
             <NavDropdown title="Proj. Ideas" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/ideas">Generic Ideas</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/ideas">
+              <NavDropdown.Item href="/idea">
                 Specific Ideas
               </NavDropdown.Item>
             </NavDropdown>
