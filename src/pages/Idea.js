@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { Button, List, Input } from 'antd';
 import "./Idea.css";
 
 function SubmitButton({ onSubmit }) {
   return (
-    <button className="submit-button" onClick={onSubmit}>
+    <Button type="primary" onClick={onSubmit}>
       Submit
-    </button>
+    </Button>
   );
 }
 
@@ -38,8 +39,11 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <input
+    <div className="container">
+      <h1>Topic specific ideas generator</h1>
+      <p>Got an theme in mind, then go ahead to get crazy ideas based on your favourite themes</p>
+      <br/>
+      <Input
         type="text"
         id="topic"
         name="message"
@@ -57,11 +61,11 @@ function App() {
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
       {data && (
-        <p>
+        <List>
           {data.map((item) => (
-            <li>{item}</li>
+            <List.Item>{item}</List.Item>
           ))}
-        </p>
+        </List>
       )}
     </div>
   );
