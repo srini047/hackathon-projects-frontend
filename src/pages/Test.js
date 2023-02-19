@@ -25,3 +25,27 @@
 
 // export default TextInputPage;
 
+import React from "react";
+import "./Test.css";
+
+function App() {
+  return (
+    <div className="container">
+      <h1>My Lists</h1>
+      <form>
+        {/* <label>
+          Name:
+          <input type="text" name="name" />
+        </label> */}
+        <button type="submit">Generate Ideas</button>
+      </form>
+      <div className="lists-container">
+        <ul className="list">
+          <li>Item 1</li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default App;
