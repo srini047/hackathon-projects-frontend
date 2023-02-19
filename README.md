@@ -5,7 +5,6 @@
 ## Video Demo
 
 [HackProInit-Demo](https://youtu.be/-8w_8LFkrEA "Youtube")
-[![HackProInit-Demo](https://user-images.githubusercontent.com/81156510/219946458-0481d137-1111-4f67-bd74-59263958abf8.png)]([[https://youtu.be/StTqXEQ2l-Y?t=35s](https://youtu.be/-8w_8LFkrEA)](https://youtu.be/-8w_8LFkrEA) "HackProInit-Demo")
 
 *Submitted to [MLH Workathon](https://work-a-thon.devpost.com)*
 
