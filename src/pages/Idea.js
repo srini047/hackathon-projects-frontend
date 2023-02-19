@@ -25,7 +25,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/projectIdea?topic=${topic}`
+        `http://localhost:4000/projectIdea?topic=${topic}`
       );
       const uncleanData = await response.json();
       const data = uncleanData.description.split("\n").splice(1);
