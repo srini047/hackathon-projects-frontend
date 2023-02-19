@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Button, Input } from "antd";
+import Spinner from "react-bootstrap/Spinner";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import "./Idea.css";
 
 function SubmitButton({ onSubmit }) {
@@ -40,34 +43,45 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <h1>Project description generator</h1>
-      <p>Skip the time of writing description for your project.</p>
-      <h3>Thanks to Cohere!!!</h3>
-      <br />
-      <Input
-        type="text"
-        id="name"
-        name="message"
-        onChange={handleChange}
-        placeholder="Provide your project title..."
-      />
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          handleSubmit();
-        }}
-      >
-        <SubmitButton onSubmit={handleSubmit} />
-      </form>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>Error: {error.message}</p>}
-      {data && (
-        <p>
-          {data.description.split('\n').join('')}
-        </p>
-      )}
-    </div>
+    <>
+      <Navbar />
+      <div className="container">
+        <h1>Project description generator</h1>
+        <p>Skip the time of writing description for your project.</p>
+        <h3>Thanks to Cohere!!!</h3>
+        <br />
+        <Input
+          type="text"
+          id="name"
+          name="message"
+          onChange={handleChange}
+          placeholder="Provide your project title..."
+        />
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            handleSubmit();
+          }}
+        >
+          <SubmitButton onSubmit={handleSubmit} />
+        </form>
+        {isLoading && (
+          <p>
+            Loading...
+            <Spinner
+              as="span"
+              animation="grow"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+          </p>
+        )}
+        {error && <p>Error: {error.message}</p>}
+        {data && <p>{data.description.split("\n").join("")}</p>}
+      </div>
+      <Footer />
+    </>
   );
 }
 

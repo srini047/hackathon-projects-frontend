@@ -72,30 +72,35 @@
 
 // export default App;
 
-import React from 'react';
-import { Button, List, Input } from 'antd';
+import React from "react";
+import { Button, List, Input } from "antd";
+import NavBar from "../components/Navbar";
+import Footer from "../components/Footer";
 import "./Test.css";
 
 const MyComponent = () => {
   return (
-    <div className='container'>
-      <Input placeholder="Enter text here" />
-      <Button type="primary">Submit</Button>
-      <List>
-        <List.Item>Item 1</List.Item>
-        <List.Item>Item 2</List.Item>
-        <List.Item>Item 3</List.Item>
-        <List.Item>Item 4</List.Item>
-        <List.Item>Item 5</List.Item>
-        <List.Item>Item 6</List.Item>
-        <List.Item>Item 7</List.Item>
-        <List.Item>Item 8</List.Item>
-        <List.Item>Item 9</List.Item>
-        <List.Item>Item 10</List.Item>
-      </List>
-    </div>
+    <>
+      <NavBar />
+      <div className="container">
+        <Input placeholder="Enter text here" />
+        <Button type="primary">Submit</Button>
+        <List>
+          <List.Item>Item 1</List.Item>
+          <List.Item>Item 2</List.Item>
+          <List.Item>Item 3</List.Item>
+          <List.Item>Item 4</List.Item>
+          <List.Item>Item 5</List.Item>
+          <List.Item>Item 6</List.Item>
+          <List.Item>Item 7</List.Item>
+          <List.Item>Item 8</List.Item>
+          <List.Item>Item 9</List.Item>
+          <List.Item>Item 10</List.Item>
+        </List>
+      </div>
+      <Footer />
+    </>
   );
 };
 
 export default MyComponent;
-
